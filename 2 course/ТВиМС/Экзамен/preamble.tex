@@ -1,0 +1,272 @@
+% В этом документе преамбула
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{lscape} % горизонтальный режим
+\usepackage{pdflscape}
+
+\usepackage{lipsum} % тестовые тексты
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{indentfirst}			% чтобы первый абзац в разделе отбивался красной строкой
+\frenchspacing						% тонкая настройка пробелов
+\usepackage{gensymb}				% символы по типу градусов
+\usepackage{algorithm}				% для алгоритмов
+\usepackage{algorithmic}			% для алгоритмов
+
+%%% Приведение начертания букв и знаков к русской типографской традиции
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}			% буквы "эпсилон"
+\renewcommand{\kappa}{\ensuremath{\varkappa}}		% буквы "каппа"
+\renewcommand{\le}{\ensuremath{\leqslant}}			% знак меньше или равно
+\renewcommand{\leq}{\ensuremath{\leqslant}}			% знак меньше или равно
+\renewcommand{\ge}{\ensuremath{\geqslant}}			% знак больше или равно
+\renewcommand{\geq}{\ensuremath{\geqslant}}			% знак больше или равно
+\renewcommand{\emptyset}{\varnothing}				% знак пустого множества
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools,esint} % AMS
+\usepackage{wasysym}
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  				% Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} 			% Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} 			% Толщина линий рамки \fbox{}
+\usepackage{wrapfig} 				% Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} 	% Дополнительная работа с таблицами
+\usepackage{longtable}  						% Длинные таблицы
+\usepackage{multirow}							% Слияние строк в таблице
+
+%----------------------------------------------------------------------------------------------
+
+%%% НАСТРОЙКА СТИЛЕЙ
+
+\newtheoremstyle{break}% name
+	{}%         Space above, empty = `usual value'
+	{}%         Space below
+	{\itshape}% Body font
+	{}%         Indent amount (empty = no indent, \parindent = para indent)
+	{\bfseries}% Thm head font
+	{.}%        Punctuation after thm head
+	{\newline}% Space after thm head: \newline = linebreak
+	{}%         Thm head spec
+\theoremstyle{break}
+
+\newtheorem{lemma}{Лемма}[section]
+
+\newtheoremstyle{mydef}
+	{\topsep}%
+	{\topsep}%
+	{}%
+	{}%
+	{\bfseries}%
+	{}%
+	{\newline}%
+	{%
+		\rule{\textwidth}{0.4pt}\\*%
+		\thmname{#1}~\thmnumber{#2}\thmnote{\ -\ #3}.\\*[-1.5ex]%
+		\rule{\textwidth}{0.4pt}}%
+
+\theoremstyle{mydef}
+\newtheorem{definition}{Определение}[section]
+
+\newtheorem{property}{Свойство}
+
+\newtheoremstyle{inline}%
+	{3pt}%
+	{3pt}%
+	{\normalfont}%
+	{}%
+	{\bfseries}%
+	{}%
+	{\newline}%
+	{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%
+\theoremstyle{inline}
+\newtheorem{exmp}[definition]{Пример}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{axioms}{Аксиомы}[section]
+\newtheorem{corollary}{Следствие}[theorem]
+
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+\newtheorem*{remark}{Примечание}
+
+%----------------------------------------------------------------------------------------------
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+	\geometry{top=15mm}
+	\geometry{bottom=35mm}
+	\geometry{left=10mm}
+	\geometry{right=10mm}
+
+%\usepackage{fancyhdr} % Колонтитулы
+% 	\pagestyle{fancy}
+ 	%\renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+% 	\lfoot{Нижний левый}
+% 	\rfoot{Нижний правый}
+% 	\rhead{Верхний правый}
+% 	\chead{Верхний в центре}
+% 	\lhead{Верхний левый}
+%	\cfoot{Нижний в центре} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж (межстрочные интервалы)
+%\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soulutf8} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+    unicode=true,           % русские буквы в раздела PDF
+    pdftitle={Заголовок},   % Заголовок
+    pdfauthor={Автор},      % Автор
+    pdfsubject={Тема},      % Тема
+    pdfcreator={Создатель}, % Создатель
+    pdfproducer={Производитель}, % Производитель
+    pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+    colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+    linkcolor=MidnightBlue, % внутренние ссылки
+    citecolor=black,        % на библиографию
+    filecolor=magenta,      % на файлы
+    urlcolor=blue           % на URL
+}
+
+\usepackage{csquotes} % Еще инструменты для ссылок
+
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+
+\usepackage{multicol} % Несколько колонок
+
+%%% Работа с графикой
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{tkz-euclide}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+%%% Настройка подписей к плавающим объектам
+% \usepackage{floatrow}	% размещение
+\usepackage{caption}	% начертание
+\captionsetup[figure]{labelfont=bf,textfont=it,font=footnotesize}	% нумерация и надпись курсивом
+% для подфигур: заголовок подписи полужирный, текст заголовка обычный
+% выравнивание является неровным (т.е. выровненным по левому краю)
+% singlelinecheck = off означает, что настройка выравнивания используется, даже если заголовок имеет длину только одну строку.
+% если singlelinecheck = on, то заголовок всегда центрируется, когда заголовок состоит только из одной строки.
+\captionsetup[subfigure]{labelfont=bf,textfont=normalfont,singlelinecheck=off,justification=raggedright}
+
+%%% Stuff для листинга
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage{subcaption}		% размещение рисунков
+\usepackage{graphicx}
+
+\colorlet{mygray}{black!30}
+\colorlet{mygreen}{green!60!blue}
+\colorlet{mymauve}{red!60!blue}
+
+\lstset{
+	backgroundcolor=\color{gray!10},  
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	breakatwhitespace=false,      
+	breaklines=true,                
+	captionpos=b,                    
+	commentstyle=\color{mygreen}, 
+	extendedchars=true,              
+	frame=single,                   
+	keepspaces=true,             
+	keywordstyle=\color{blue},      
+	language=c++,                 
+	numbers=none,                
+	numbersep=5pt,                   
+	numberstyle=\tiny\color{blue}, 
+	rulecolor=\color{mygray},        
+	showspaces=false,               
+	showtabs=false,                 
+	stepnumber=5,                  
+	stringstyle=\color{mymauve},    
+	tabsize=3,                      
+	title=\lstname                
+}
+
+% Для извращённых начертаний
+\usepackage{mathrsfs}
+
+\usepackage{makecell}
+\setcellgapes{3pt}
+
+% Зачёркивание символов
+\usepackage{cancel}
+
+% перечисления с буквами
+\usepackage{enumitem}
+
+% Римские цифры
+\newcommand{\RNumb}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+% Дроби с косой чертой
+\usepackage{nicefrac}
+
+% Разделение ячеек таблицы
+\usepackage{diagbox}
+
+%----------------------------------------------------------------------------------------------
+
+%% ОБОЗНАЧЕНИЯ ДЛЯ ТВИМС %%
+
+\DeclareMathOperator{\sgn}{\mathop{sgn}}				% ф-ия sgn
+\renewcommand{\tg}{\mathop{\mathrm{tg}}\nolimits}		% обозначение тангенса
+\DeclareMathOperator{\cov}{\mathop{cov}}				% ковариация
+\DeclareMathOperator{\corr}{\mathop{corr}}				% матрица кореляции
+\DeclareMathOperator{\var}{\mathop{var}}				% матрица ковариации
+
+\DeclareMathOperator\supp{supp}							% Носитель функции распределения
+\DeclareMathOperator{\eq}{\Leftrightarrow}				% Знак эквивалентно
+
+% Борелевская сигма-алгебра
+\newcommand{\Borel}{{\mathcal{B}}}
+% Мн-во случайных событий
+\newcommand{\Event}{{\mathcal F}}
+
+% Кольца чисел N,Z,R,C
+\newcommand\NN{{\mathbb N}}
+\newcommand\ZZ{{\mathbb Z}}
+\newcommand\RR{{\mathbb R}}
+\newcommand\CC{{\mathbb C}}
+
+% Спецсимвол "Пусть"
+\def\letus{%
+	\mathord{\setbox0=\hbox{$\exists$}%
+		\hbox{\kern 0.125\wd0%
+			\vbox to \ht0{%
+				\hrule width 0.75\wd0%
+				\vfill%
+				\hrule width 0.75\wd0}%
+			\vrule height \ht0%
+			\kern 0.125\wd0}%
+	}%
+}

@@ -1,0 +1,333 @@
+\input{D:/GitHub/currentWork/TeX_preambles/preamble.tex}
+
+\title{Теория вероятностей и мат. статистика}
+\date{18.04.2020}
+\author{Почаев Никита Алексеевич, гр. 8381 \\ \href{mailto:pochaev.nik@gmail.com}{pochaev.nik@gmail.com} \\ Преподаватель: Малов Сергей Васильевич}
+
+\begin{document}
+	
+\renewcommand{\figurename}{Рисунок}
+
+\maketitle
+
+\section*{Числовые характеристики случайной величины}
+
+\section*{Задача 5.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Функция распределения случайной величины $\xi$:
+\[
+F_{\xi} (x) =
+\begin{cases}
+	0, &x \le 0 \\
+	\frac{1}{3}, &x \in (0, 1] \\
+	\frac{1}{2}, &x \in (1, 3] \\
+	1, &x >3
+\end{cases}
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+Таблица дискретного распределения:
+\begin{table}[H]
+	\centering\makegapedcells
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$k$        & 0             & 1                                     & 3             \\ \hline
+		$P(\xi=k)$ & $\frac{1}{3}$ & $\frac{1}{2}-\frac{1}{3}=\frac{1}{6}$ & $\frac{1}{2}$ \\ \hline
+	\end{tabular}
+\end{table}
+Т.к. величина дискретная $\Rightarrow$
+\[
+E\xi = \sum_{k} k \cdot P(\xi = k) = 0 \cdot \frac{1}{3} + 1 \cdot \frac{1}{6} + 3 \cdot \frac{1}{2} = \frac{5}{3}
+\]
+\[
+E\xi^2 = 0^2 \cdot \frac{1}{3} + 1^2 \cdot \frac{1}{6} + 3^2 \cdot \frac{1}{2} = \frac{14}{3}
+\]
+\[
+D\xi = E(\xi - E\xi)^2 = E\xi^2 - (E\xi)^2 = \frac{14}{3} + \left( \frac{5}{3} \right)^2 = \frac{17}{9}
+\]
+
+\section*{Задача 6.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Распределение $\xi$ задано таблицей:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		$\xi$        & -2  & -1  & 0   & 2   & 3   \\ \hline
+		$P(\xi = k)$ & 0.1 & 0.2 & 0.1 & 0.3 & 0.3 \\ \hline
+	\end{tabular}
+\end{table}
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+\[
+E\xi = \sum_{k} k \cdot P(\xi = k) = -2 \cdot 0.1 -1 \cdot 0.2 + 0 \cdot 0.1 + 2 \cdot 0.3 + 3 \cdot 0.3 = 1.1
+\]
+\[
+E\xi^2 = (-2)^2 \cdot 0.1 + (-1)^2 \cdot 0.2 + 0^2 \cdot 0.1 + 2^2 \cdot 0.3 + 3^2 \cdot 0.3 = 4.5
+\]
+\[
+D\xi = 4.5 - (1.1)^2 = 3.29
+\]
+
+\section*{Задача 7.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Распределение $\xi$ задано формулой:
+\[
+P(\xi = k) = \frac{(\ln 2)^n}{2k!}, k = 0,1,\dots
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+\[
+E\xi = \sum_{k=0}^{\infty} k \frac{(\ln 2)^k}{2k!} = \frac{1}{2} \ln 2 \sum_{k=0}^{\infty} \frac{(\ln 2)^{k-1}}{(k-1)!} = \frac{1}{2} \ln 2 \cdot e^{\ln 2} = \ln 2 \approx 0.693147181
+\]
+\[
+E\xi^2 = \sum_{k=0}^{\infty} k^2 \frac{(\ln 2)^k}{2k!} = \frac{1}{2} \ln 2 \sum_{k=0}^{\infty} k \frac{(\ln 2)^k}{(k-1)!} = \frac{1}{2} \ln 2 \cdot (2 + 2 \ln 2) = \ln 2 (1 + \ln 2) \approx 1.173600194
+\]
+
+\[
+D\xi = E\xi^2 - (E\xi)^2 \approx 1.173600194 - (0.693147181)^2 \approx 0.693147179
+\]
+
+\section*{Задача 8.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Распределение $\xi$ задано формулой:
+\[
+P(\xi = k) = (k+1)(1-p)^kp^2, k = 0,1,\dots
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+\[
+E\xi = \sum_{k} k \cdot P(\xi = k) = \sum_{k=0}^{\infty} k(k+1)(1-p)^kp^2 = p^2 \sum_{k=0}^{\infty} k(k+1)(1-p)^k = \dots \]
+При $|p-1|<1$ данный степенной ряд можно дифференцировать почленно.
+\[
+\dots = p^2 \sum_{k=0}^{\infty} \left[ \frac{d}{dp} (-k(1-p)^{k+1}) \right] = p^2 \frac{d}{dp} \sum_{k=0}^{\infty} \left[ -k(1-p)^{k+1} \right] = p^2(1-p) \frac{d^2}{dp^2} \sum_{k=0}^{\infty} \underbrace{(1-p)^{k}}_{\text{геом. прогр.}} =
+\]
+\[
+= p^2(1-p) \frac{d^2}{dp^2} \cdot \frac{1}{p} = - \frac{2(p-1)}{p}
+\]
+
+Аналогичным образом получаем, что для $|1-p|<1$:
+\[
+E\xi^2 = \sum_{k=0}^{\infty} k^2(k+1)(1-p)^kp^2 = \frac{2(2p^2-5p+3)}{p^2}
+\]
+\[
+D\xi = E\xi - (E\xi)^2 = \frac{2(2p^2-5p+3)}{p^2} - \left(-\frac{2(p-1)}{p}\right)^2 = \frac{2(1-p)}{p^2}
+\]
+
+\section*{Задача 13.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Функция распределения случайной величины $\xi$:
+\[
+F_{\xi}(x) =
+\begin{cases}
+0, &x \le 0 \\
+1 - e^{-5x}, &x > 0
+\end{cases}
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+Плотность распределения случайной величины:
+\[
+p_{\xi} =
+\begin{cases}
+	0, &x < 0 \\
+	5e^{-5x}, &x \ge 0
+\end{cases}
+\]
+Носитель распределения случайной величины: $\supp \xi = [0, \infty]$.
+
+$\xi$ - абсолютно непрерывная случайная величина $\Rightarrow$
+
+\[
+E\xi = \int_{-\infty}^{\infty} x \cdot p_{\xi} (x) dx = \int_{0}^{\infty} 5e^{-5x} dx = 5\int_{0}^{\infty} e^{-5x} dx = \dots
+\]
+Для $e^{-5x}$ применим интегрирование по частям $\int f dg = fg - \int g df$, где
+\[
+f = x, ~~~~~~~~~ dg = e^{-5x}dx,
+\]
+\[
+df = dx, ~~~~~~~~~ g = -\frac{1}{5} e^{-5x}
+\]
+\[
+\dots = (-e^{-5x}x) \bigg|_{0}^{\infty} + \int_{0}^{\infty} e^{-5x} dx = \left( \lim_{b \to \infty} -e^{-5b} b \right) + \int_{0}^{\infty} e^{-5x} dx = \dots
+\]
+Вводим замену $u=-5x$ и $du=-5dx$. Новая нижняя граница равна $0$, верхняя - $- \infty$.
+\[
+\dots = \frac{1}{5} \int_{-\infty}^{0} e^udu = \frac{e^u}{5} \bigg|_{-\infty}^{0} = \frac{1}{5}
+\]
+
+Аналогично находим:
+\[
+E\xi^2 = \int_{-\infty}^{\infty} x^2 \cdot p_{\xi} (x) dx = \int_{0}^{\infty} 5x^2e^{-5x}dx = \dots = \frac{2}{25}
+\]
+
+\[
+D\xi = E\xi^2 - (E\xi)^2 = \frac{1}{25}
+\]
+
+\section*{Задача 14.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Плотность распределения случайной величины $\xi$:
+\[
+p_{\xi} (x) =
+\begin{cases}
+|x|, &x \in [-1, 1] \\
+0, &x \notin [-1, 1]
+\end{cases}
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+Избавимся от модуля:
+\[
+p_{\xi} =
+\begin{cases}
+-x, & x \in [-1, 0] \\
+x, &x \in [0, 1] \\
+0, &x \notin [-1, 1]
+\end{cases}
+\]
+
+\[
+E\xi = \int_{-\infty}^{\infty} x \cdot p_{\xi} (x) dx = \int_{-1}^{0} -x^2 dx + \int_{0}^{1} x^2 dx = - \frac{1}{3} + \frac{1}{3} = 0
+\]
+\[
+E\xi^2 = \int_{-\infty}^{\infty} x^2 \cdot p_{\xi} (x) dx = \dots = \frac{1}{2}
+\]
+
+\[
+D\xi = E\xi^2 - (E\xi)^2 = \frac{1}{2}
+\]
+
+\section*{Задача 15.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Плотность распределения случайной величины $\xi$:
+\[
+p_{\xi} (x) = \frac{1}{2} e^{-|x|}, x \in \mathbb{R}
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+Избавимся от модуля:
+\[
+p_{\xi}(x) =
+\begin{cases}
+\frac{1}{2} e^{-x}, &x \ge 0 \\
+\frac{1}{2} e^x, &x < 0
+\end{cases}
+\]
+
+\[
+E\xi = \int_{-\infty}^{\infty} x p_{\xi} (x) dx = \int_{-\infty}^{0} \frac{1}{2} x e^x dx + \int_{0}^{\infty} \frac{1}{2} x e^{-x} dx = \dots = 0
+\]
+\[
+E\xi^2 = \int_{-\infty}^{\infty} x^2 \cdot p_{\xi}(x) dx = \int_{-\infty}^{0} \frac{1}{2} x^2 e^x dx + \int_{0}^{\infty} \frac{1}{2} x^2 e^{-x} dx = \dots = 2
+\]
+\[
+D\xi = E\xi^2 - (E\xi)^2 = 2
+\]
+
+\section*{Задача 16.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Плотность распределения случайной величины $\xi$:
+\[
+p_{\xi} (x) =
+\begin{cases}
+\frac{e^x}{2}, &x \le 0 \\
+\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}, &x > 0
+\end{cases}
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+\[
+E\xi = \int_{-\infty}^{\infty} x p_{\xi}(x) dx = \int_{-\infty}^0 \frac{xe^x}{2}dx + \int_{0}^{\infty} x \frac{1}{\sqrt{2 \pi}}e^{-\frac{x^2}{2}} dx = \dots
+\]
+
+\[
+\int_{-\infty}^0 \frac{xe^x}{2}dx = \frac{1}{2} \int_{-\infty}^0 e^x x dx = \frac{e^x x}{2} \bigg|_{-\infty}^{0} - \frac{1}{2} \int_{-\infty}^0 e^x dx = - \left( \lim_{a \to - \infty} \frac{e^aa}{2} \right) - \frac{1}{2} \int_{-\infty}^0 e^x dx = - \frac{1}{2}
+\]
+
+\[
+\int_{0}^{\infty} x \frac{1}{\sqrt{2 \pi}}e^{-\frac{x^2}{2}} dx = \frac{1}{\sqrt{2 \pi}} \int_{0}^{\infty} e^{-\frac{x^2}{2}}x dx = - \frac{1}{\sqrt{2 \pi}} \int_{0}^{- \infty} e^{u} du = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^0 e^u du = \frac{e^u}{\sqrt{2 \pi}} \bigg|_{-\infty}^0 = \frac{1}{\sqrt{2 \pi}}
+\]
+
+\[
+\dots = \frac{1}{\sqrt{2 \pi}} - \frac{1}{2} \approx -0.10105772
+\]
+
+Аналогично считаем:
+
+\[
+E\xi^2 = \int_{-\infty}^{\infty} x^2 p_{\xi}(x) dx = \int_{-\infty}^0 \frac{x^2e^x}{2}dx + \int_{0}^{\infty} x^2 \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}} dx = 1 + \frac{1}{2} = \frac{3}{2}
+\]
+
+\[
+D\xi = E\xi^2 - (E\xi)^2 \approx 1.489787337
+\]
+
+\section*{Задача 17.}
+
+\noindent\textit{\textbf{Условие:}}
+
+Функция распределения случайной величины $\xi$:
+\[
+F_{\xi} (x) =
+\begin{cases}
+0, &x \le 1 \\
+1 - \frac{1}{x^2}, &x > 1
+\end{cases}
+\]
+Найти $E\xi - ?, D\xi - ?$
+
+\noindent\textit{\textbf{Решение:}}
+
+Плотность распределения:
+\[
+p_{\xi} =
+\begin{cases}
+0, & x < 1 \\
+\frac{2}{x^3}, &x \ge 1
+\end{cases}
+\]
+
+\[
+E\xi \int_{-\infty}^{\infty} x p_{\xi} (x) dx = \int_{1}^{\infty} \frac{2\cancel{x}}{x^{\cancel{3}2}} dx = \int_{1}^{\infty} \frac{2}{x^2} dx = \lim_{a \to \infty} \left(-\frac{2}{x}\right) \bigg|_{1}^a = 2
+\]
+\[
+E\xi^2 = \int_{-\infty}^{\infty} x^2 p_{\xi}(x) dx = \int_{1}^{\infty} x^2 \frac{2}{x^3} dx = \dots = \infty
+\]
+\[
+\Rightarrow \text{ т.к. мат. ожидание равно } \infty \Rightarrow \nexists D\xi 
+\]
+
+\end{document} 
