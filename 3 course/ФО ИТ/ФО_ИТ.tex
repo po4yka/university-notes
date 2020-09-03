@@ -1,0 +1,81 @@
+\input{./preamble.tex}
+
+\DeclareMathOperator{\rot}{\text{rot}}
+\DeclareMathOperator{\divFiz}{\text{div}}
+\DeclareMathOperator{\grad}{\text{grad}}
+
+\begin{document} % начало документа
+
+\section*{Темы для повторения}
+
+Уравнение Максвелла, дифференциальные уравнения, уравнения Д'Аламбера, полупроводниковые устройства (от диодов до микросхем, аналоговая / цифровая схемотехника.) Мониторы (жидко-кристаллические) - оптика (поляризация). Системы хранения информации: магнитные носители, SSD - ферамагнетики, гистерезис / квантовая механика. \textbf{Преобразование Фурье}. Печатающие устройства - струйные и сублимационные. Квантовые компьютеры.
+
+\section{Электромагнитная теория волноводов}
+
+Уравнение Максвелла для плоской волны:
+
+\begin{remark}
+	дифференциальная форма
+\end{remark}
+
+\[
+\begin{cases}
+	\rot \vec{E} = - \dfrac{\partial \vec{B}}{\partial t} \\
+	\rot \vec{H} = \vec{j} + \dfrac{\partial \vec{D}}{\partial t}, \vec{j} - \text{ плотность тока} \\
+	\divFiz \vec{D} = \rho, \rho - \text{ объёмная плотность заряда} \\
+	\vec{B} = 0 \\
+	\vec{B} = \mu \mu_o \vec{H} \\
+	\vec{D} = \epsilon \epsilon_0 \vec{E}
+\end{cases}
+\]
+
+\begin{enumerate}
+	\item Закон Фарадея. Переменное магнитное поле порождает вихревое электрическое.
+	\item Закон полного тока. Переменное электрическое поле порождает вихревое магнитное.
+	\item Закон полного тока.
+	\item Теорема Гаусса в дифференциальной форме. Источником электростатического поля являются заряды.
+	\item Теорема Гаусса для магнитного поля.
+\end{enumerate}
+
+$\vec{B}$ - индукции магнитного поля [ТЛ], $\vec{D}$ - индукция электрического поля [$\text{КЛ}/\text{м}^2$], $\vec{H}$ - напряжённость магнитного поля [$\text{А}/\text{м}$], $\vec{E}$ - напряжённость электрического поля [$\text{В}/\text{м}$].
+
+\[
+\nabla = 
+\begin{bmatrix}
+	\dfrac{\partial}{\partial x} \\
+	\dfrac{\partial}{\partial y} \\
+	\dfrac{\partial}{\partial z} \\
+\end{bmatrix}
+- \text{ оператор Набла}
+\]
+\[
+\nabla \phi = \vec{i} ~ \frac{\partial \phi}{\partial x} + \vec{j} ~ \frac{\partial \phi}{\partial y} + \vec{k} ~ \frac{\partial \phi}{\partial z} = \grad \phi
+\]
+\[
+\vec{E} = \grad \phi
+\]
+\[
+\nabla \cdot \vec{D} = \divFiz \vec{D} = \frac{\partial Dx}{\partial x} + \frac{\partial Dy}{\partial y} + \frac{\partial Dz}{\partial z}
+\]
+вектор $\to$ скаляр
+\[
+\nabla \times \vec{E} = \rot \vec{E} =
+\det
+\begin{bmatrix}
+	\vec{i} & \vec{j} & \vec{k} \\
+	\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+	E_x & E_y & E_z
+\end{bmatrix}
+\]
+\[
+\rot \vec{E} \ne 0 - \text{ вихревое поле}
+\]
+\[
+\vec{E} - \grad \phi - \text{потенциальное поле}
+\]
+
+\newpage
+
+\tableofcontents
+
+\end{document} % конец документа
